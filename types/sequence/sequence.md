@@ -161,7 +161,6 @@ Returned list have always same amount of elements as the smallest sequence suppl
 
 `(map func sequence_A sequence_B ... sequence_N)`
 
-All sequences must have same data type.
 
 `func` can be either build-in function or user-defined function.
 
