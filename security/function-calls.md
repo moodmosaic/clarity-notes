@@ -6,7 +6,7 @@ There are two keywords we can use for that purpose: `tx-sender` and `contract-ca
 ## Contract owner guard example
 Basic primitives:
 
-```clojure
+```clarity
 ;; we have to store who is contract owner and to do so we assign tx-sender to constant
 (define-constant CONTRACT_OWNER tx-sender)
 
@@ -26,7 +26,7 @@ All functions with tokens side-effects (minting, transferring, burning STX/FT/NF
 Transactions submitted in `deny-mode` in which we call functions with tokens side-effects are guarded by transaction post-conditions.
 
 **Example:**
-```clojure
+```clarity
 (define-constant CONTRACT_ADDRESS (as-contract tx-sender))
 (define-data-var accumulatedFees uint)
 

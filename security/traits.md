@@ -7,7 +7,7 @@ In general these functions has to be written with the assumption that the suppli
 **Example:**
 Let's assume we have a contract from which user can withdraw an amount of STX multiplied by a rate that is provided by some form of oracle contract. And we have multiple oracles, so we decided to use trait. Each oracle returns rate between 1 and 3. So we have code like this: 
 
-```clojure
+```clarity
 (define-trait oracle-trait (
     (get-rate () (response uint uint))
 ))
@@ -28,7 +28,7 @@ Let's assume we have a contract from which user can withdraw an amount of STX mu
 All 3 arguments aren't verified by anything, but let's focus only on the last one, `oracle`.
 
 If user address of a trusted oracle, this function will work as expected. But what if user provide address to a contract that looks like this:
-```clojure
+```clarity
 (define-public (get-rate)
     (ok u2000)
 )
@@ -37,7 +37,7 @@ If user address of a trusted oracle, this function will work as expected. But wh
 It will allow user to withdraw a lot more than it should be able.
 
 To avoid that every single trait argument provided by user must be verified before we use it:
-```clojure
+```clarity
 (define-trait oracle-trait (
     (get-rate () (response uint uint))
 ))

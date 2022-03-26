@@ -54,7 +54,7 @@ Add to your contract following function and make a not how expensive it is to ex
 
 Whenever you add more code, or remove significant portion of the code from your contract you should re-evaluate cost of this baseline function.
 
-```clojure
+```clarity
 (define-read-only (a) true)
 ```
 
@@ -80,7 +80,7 @@ If you suspect that part of your code might be very expensive - extract it into 
 If you are using `let` and store in local variable value that you use only once - stop doing that. Replace usage of this variable with code that calculates. Every single local variable contributes to execution costs. 
 
 If you calculate values that can't change over time - define them as constant. Ie.
-```clojure
+```clarity
 (define-constant CONTRACT_ADDRESS (as-contract tx-sender))
 ```
 
@@ -95,14 +95,14 @@ If you calculate values that can't change over time - define them as constant. I
 6. Combining multiple contract calls to the same contract into single call
 
     If you have code like this:
-    ```clojure
+    ```clarity
     (let (
         (some-value (unwrap-panic! (contract-call? .contract get-value)))
         (rate (unwrap-panic! (contract-call? .contract get-rate-for-value some-value)))
     ))
     ```
     Create extra function in `.contract` so that you could make only one contract call to it like this:
-    ```clojure
+    ```clarity
     (let (
         (rate (unwrap-panic! (contract-call? .contract get-rate)))
     ))
@@ -142,7 +142,7 @@ If you create variables inside `let` and use them once and only once - check cod
 Analyze `read-only` functions. If they don't fit into read only limits, and you have them only for the UI/off-chain purpose - try to expose data used by these functions and handle calculations off-chain. **Example:**
 
 Replace this:
-```clojure
+```clarity
 (define-read-only (get-something)
     (let (
         (value1 (map-get? Something u1))
@@ -153,7 +153,7 @@ Replace this:
 )
 ```
 with this:
-```clojure
+```clarity
 (define-read-only (get-value1)
     (map-get? Something u1)
 )

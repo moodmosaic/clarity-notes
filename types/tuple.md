@@ -15,7 +15,7 @@ Second notation is much nicer, therefore I use only this one.
 Tuples are useful if we want to store multiple information about something in map.
 For example if we would like to store name and age for multiple principals we could do something like this:
 
-```clojure
+```clarity
 (define-map
     principal
     {name: (string-ascii 50), age: uint}
@@ -29,7 +29,7 @@ For example if we would like to store name and age for multiple principals we co
 `get` is a function that extract value from tuple that is store under specific key.
 
 
-```clojure
+```clarity
 (define-data-var myTuple 
     {name: (string-ascii 50), location: (string-ascii 50), lucky-number: int}
     {name: "LNow", location: "Earth", lucky-number: 0}
@@ -51,7 +51,7 @@ For example if we would like to store name and age for multiple principals we co
 ## Merging two tuples
 `merge` is super useful when we want to merge two tuples together or to replace value of single or few fields in one tuple.
 
-```clojure
+```clarity
 (define-data-var myTuple 
     {name: (string-ascii 50), location: (string-ascii 50), lucky-number: int}
     {name: "LNow", location: "Earth", lucky-number: 0}

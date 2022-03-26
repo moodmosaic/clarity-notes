@@ -11,7 +11,7 @@ Definition: `(list max-len entry-type)`
 
 List values are separated with **space** not **coma**.
 
-```clojure
+```clarity
 ;; list that can hold up to 10 uint's
 (define-data-var myList (list 10 uint) (list u1 u1 u2))
 
@@ -25,7 +25,7 @@ List values are separated with **space** not **coma**.
 We can add new element at the end of the list using function append.
 This function always returns **new** list of the same type as input list but with `max-length` **increased by 1**.
 
-```clojure
+```clarity
 ;; list that can hold up to 4 uint's, and by default holds 3 values; u1, u2 and u3
 (define-data-var myList (list 4 uint) (list u1 u2 u3))
 
@@ -53,7 +53,7 @@ When we `append` new element to this list we get new list with larger `max-len` 
 
 To solve this problem we have to convert our `newList` to matching datatype using `as-max-len?` function.
 
-```clojure
+```clarity
 ;; list that can hold up to 3 uint's, and by default holds 3 values; u1, u2 and u3
 (define-data-var myList (list 4 uint) (list u1 u2 u3))
 

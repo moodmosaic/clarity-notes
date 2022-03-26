@@ -7,7 +7,7 @@ Definition: `(buff max-len)`
 
 `max-len` is defined using `int` value and must always be greater or equal 0.
 
-```clojure
+```clarity
 (define-data-var myBuffer (buff 10) 0x0102ab01)
 ```
 

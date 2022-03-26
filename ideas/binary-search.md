@@ -4,7 +4,7 @@ It is block winner duty in PoXL protocol, to check if he won and claim the rewar
 
 Testing every single user is too expensive, but with proper data structure it is possible to build relatively cheap function that will find block winner using binary search, mark it as winner, and mint block reward. Such function could be called by anyone or any other PoXL function.
 
-```clojure
+```clarity
 (define-map BlockLast
   uint
   {idx: uint, high: uint}

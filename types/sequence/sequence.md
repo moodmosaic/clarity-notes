@@ -53,7 +53,7 @@ Function `func` can take one, and only one input argument and its type must be t
 
 **Example:** We have a list of uint's and would like to remove from it all values smaller than 3 we could it like this:
 
-```clojure
+```clarity
 (define-data-var myList (list 10 uint) (list u1 u8 u3 u4 u5 u2 u6 u7 u9 u10))
 
 (define-private (is-greater-than-3 (input uint))
@@ -85,7 +85,7 @@ Function `func` must take 2 and only 2 arguments. First arguments must have exac
 
 **Example:** We have a list of uint's and would like to sum only values between 3 and 7.
 
-```clojure
+```clarity
 (define-data-var myList (list 10 uint) (list u1 u8 u3 u4 u5 u2 u6 u7 u9 u10))
 
 (define-private (sum-between-3-and-7 (input uint) (return-value uint))
@@ -142,7 +142,7 @@ Useful in datatype conversions, or testing if particular element exists in our l
 
 If sequence is defined with `max-len` = 10, and it contains only one element, then `len` will return `u1`.
 
-```clojure
+```clarity
 (define-data-var myList (list 10 uint) (list u1))
 
 (define-public (test-len)
@@ -167,7 +167,7 @@ Returned list have always same amount of elements as the smallest sequence suppl
 Some build in functions works on dynamic number of arguments ie. addition `(+ u1 u2 u3 u4 u5 .... n)`, but user defined functions don't. Therefore user-defined function must be tailored to number of sequences we want to work with. If we want to work on 2 sequences - UDF must take 3 input arguments, if we want to work with 10 sequences - UDF must take 10 input arguments etc.
 
 **Example:** 
-```clojure
+```clarity
 (define-data-var myListA (list 10 uint) (list u1 u2 u3 u4 u5 u6 u7 u8 u9 u10))
 (define-data-var myListB (list 10 uint) (list u10 u9 u8 u7 u6 u5 u4 u3 u2 u1))
 (define-data-var myListC (list 10 uint) (list u11 u4 u9))

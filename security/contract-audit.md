@@ -63,7 +63,7 @@ At the end of this stage we should have functions split into 4 different categor
 
     Functions secured using `tx-sender` value must be triple checked. If values they change aren't critical (used to secure other functions) they are OK.
     > **Example:** 
-    > ```clojure
+    > ```clarity
     > (define-public (change-uri (new-uri (string-ascii 255)))
     >   (begin
     >     (asserts! (is-eq tx-sender CONTRACT_OWNER) ERR_NOT_AUTHORIZED)

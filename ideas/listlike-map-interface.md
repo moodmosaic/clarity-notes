@@ -2,7 +2,7 @@ Instead of storing who owns particular NFT in huge lists it is much more efficie
 
 The best option would be not use external block-chain indexer for this job, but this is something for another day.
 
-```clojure
+```clarity
 (define-constant ERR_UNKNOWN_NFT (err u123123))
 
 (define-map NFTLastIdx

@@ -1,4 +1,4 @@
-```clojure
+```clarity
 (define-constant ERR_UNKNOWN_PARENT (err u123123))
 
 (define-data-var lastParentId uint u0)

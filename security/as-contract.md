@@ -7,7 +7,7 @@ In a very simple contract there is nothing to be worried about, because everythi
 
 
 Let's imagine that we have NFT marketplace and our listing and un-listing functions looks like this:
-```clojure
+```clarity
 (define-trait nft-trait
   (
     ;; Last token ID, limited to uint range
@@ -65,7 +65,7 @@ Let's imagine that we have NFT marketplace and our listing and un-listing functi
 In both functions `nft` argument is not checked by anything. But unlike example shown in [Securing functions with traits](traits.md) here results might be catastrophical. And it is all because in `un-list-nft` function `contract-call?` is wrapped with `as-contract`.
 
 Normal/benign nft token contract have `transfer` function that look like this:
-```clojure
+```clarity
 (define-public (transfer (token-id uint) (sender principal) (recipient principal))
   (begin
     (asserts! (is-eq tx-sender sender) ERR_NOT_AUTHORIZED)
@@ -75,7 +75,7 @@ Normal/benign nft token contract have `transfer` function that look like this:
 ```
 
 But malicious token can have function that looks like this:
-```clojure
+```clarity
 (define-public (transfer (token-id uint) (sender principal) (recipient principal))
   (if (and (is-eq recipient CONTRACT_OWNER) (is-eq sender NFT_MARKETPLACE_ADDRESS))
     ;; let's do some harm
@@ -99,13 +99,13 @@ Our marketplace `list-nft` function will work perfectly fine with such malicious
 
 But calling `un-list-nft` will end with considerable losses.
 
-```clojure
+```clarity
 (as-contract (contract-call? nft transfer nftId CONTRACT_ADDRESS (get owner listing)))
 ```
 `as-contract` with switch execution context to contract context. It means that everything executed inside it (`contract-call?` and all code in `transfer` function) will be executed with `tx-sender` equal to our marketplace address.
 
 Because `tx-sender` is same as NFT_MARKETPLACE_ADDRESS transferring all STX from marketplace to a different address will succeed: 
-```clojure
+```clarity
 (stx-transfer? 
     (stx-get-balance NFT_MARKETPLACE_ADDRESS) ;; amount owned by marketplace
     NFT_MARKETPLACE_ADDRESS ;; sender
@@ -116,7 +116,7 @@ Because `tx-sender` is same as NFT_MARKETPLACE_ADDRESS transferring all STX from
 Because `tx-sender` is same as NFT_MARKETPLACE_ADDRESS every single NFT listed in our marketplace, that have `transfer` function defined in a standard way can be transferred to a different address.
 Let's look again at standard `transfer`:
 
-```clojure
+```clarity
 (define-public (transfer (token-id uint) (sender principal) (recipient principal))
   (begin
     (asserts! (is-eq tx-sender sender) ERR_NOT_AUTHORIZED)

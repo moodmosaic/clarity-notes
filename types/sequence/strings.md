@@ -13,7 +13,7 @@ Definition: `(string-ascii max-len)`
 
 Ascii strings always are enclosed within double quotes.
 
-```clojure
+```clarity
 (define-data-var myString (string-ascii 12) "hello world")
 ```
 
@@ -23,6 +23,6 @@ Definition: `(string-utf max-len)`
 `max-len` is defined using `int` value and must always be greater or equal 0.
 
 UTF-8 strings always are enclosed within double quotes. Opening quote must be preceded with letter `u`
-```clojure
+```clarity
 (define-data-var myString (string-utf8 12) u"hello world")
 ```

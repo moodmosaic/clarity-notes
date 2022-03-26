@@ -1,6 +1,6 @@
 Clarity doesn't have build-in function that could be used to convert uint to string.
 
-```clojure
+```clarity
 ;; 340282366920938463463374607431768211455
 (define-read-only (uint-to-string (value uint))
   (if (<= value u9)

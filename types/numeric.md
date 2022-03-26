@@ -23,7 +23,7 @@ All math functions can panic with overflow/underflow error.
 Conversion function can also panic with overflow/underflow error.
 
 ### Subtraction
-```clojure
+```clarity
 ;; int
 (- 10 200)
 
@@ -32,7 +32,7 @@ Conversion function can also panic with overflow/underflow error.
 ```
 
 ### Addition
-```clojure
+```clarity
 ;; int
 (+ -238 49838)
 
@@ -41,7 +41,7 @@ Conversion function can also panic with overflow/underflow error.
 ```
 
 ### Multiplication
-```clojure
+```clarity
 ;; int
 (* 2 19)
 
@@ -53,7 +53,7 @@ Conversion function can also panic with overflow/underflow error.
 Division **rounds down** returned value to the nearest value.
 
 Division panics iw we try to divide by `0` or `u0`.
-```clojure
+```clarity
 ;; int
 (/ 9 5)
 
@@ -64,7 +64,7 @@ Division panics iw we try to divide by `0` or `u0`.
 ### Modulo
 Returns reminder from division.
 
-```clojure
+```clarity
 ;; int
 (mod 2 3)
 
@@ -74,7 +74,7 @@ Returns reminder from division.
 ```
 
 ### Log2
-```clojure
+```clarity
 ;; int
 (log2 8)
 
@@ -83,7 +83,7 @@ Returns reminder from division.
 ```
 
 ### Power
-```clojure
+```clarity
 ;; int
 (pow 2 3)
 
@@ -93,7 +93,7 @@ Returns reminder from division.
 
 ### Square root
 Returns the largest integer that is less than or equal to the square root of `n`. Fails on a negative numbers.
-```clojure
+```clarity
 ;; int
 (sqrti 19)
 
@@ -103,7 +103,7 @@ Returns the largest integer that is less than or equal to the square root of `n`
 
 ### Exclusive-or
 Returns value calculated by applying bitwise [exclusive or](https://en.wikipedia.org/wiki/Exclusive_or) function.
-```clojure
+```clarity
 ;; int
 (xor 123 9)
 
@@ -115,7 +115,7 @@ Returns value calculated by applying bitwise [exclusive or](https://en.wikipedia
 Accepts only `int` value and converts it to `uint` if thats possible.
 
 Panics when negative value is supplied.
-```clojure
+```clarity
 ;; int
 (to-uint 123)
 (to-uint 0)
@@ -126,7 +126,7 @@ Panics when negative value is supplied.
 Accepts only `uint` value and converts it to `int` if thats possible.
 
 Panics when value overflows.
-```clojure
+```clarity
 ;; uint
 (to-int u123)
 (to-int u0)

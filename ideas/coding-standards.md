@@ -1,13 +1,13 @@
 ## Constants
 Constants have to be declared in all upper case with underscore separators. For example:
-```lisp
+```clarity
 (define-constant CONTRACT_OWNER tx-sender)
 (define-constant ERR_UNAUTHORIZED (err "Unauthorized!"))
 ```
 
 ## Local and persisted variables
 Local and persisted variables have to be declared in camelCase. For example:
-```lisp
+```clarity
 (define-data-var blockSize uint u128)
 (let
     (
@@ -20,7 +20,7 @@ Local and persisted variables have to be declared in camelCase. For example:
 
 ## Maps
 Maps have to be declared in PascaCase. Key tuple definition and Map tuple definition should be declared in separate lines and follow tuples standard. For example:
-```lisp
+```clarity
 (define-map UserRoles
     {user: principal}
     {roles: uint}
@@ -40,7 +40,7 @@ Tuples have to be declared using curlybracket notation. Tuple keys should be dec
 
 ## Functions
 Functions have to be declares in all lower case with dash separators. Function parameters should follow local and persisted variable standards For example:
-```lisp
+```clarity
 (define-read-only (is-root (userName (buff 50)))
     (ok true)
 )
@@ -52,7 +52,7 @@ Functions have to be declares in all lower case with dash separators. Function p
 
 ## Closing parenthesis
 Parenthesis should be closed in the same line if line is very short or at the same level as they were opened if what is inside parenthesis is more complex. For example
-```lisp
+```clarity
 ;; BAD
 (define-public (do-something-cool (userId uint))
   (let
